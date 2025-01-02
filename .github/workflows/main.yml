@@ -1,0 +1,27 @@
+name: Run Notebook
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every 24 hours
+
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Install Jupyter
+      run: pip install jupyter nbconvert
+    - name: Run Notebook
+      run: |
+        jupyter nbconvert --to notebook --execute simplied_daily_fois_alert.ipynb
+    - name: Commit results
+      run: |
+        git config --local user.email "you@example.com"
+        git config --local user.name "Your Name"
+        git add executed_notebook.ipynb
+        git commit -m "Run notebook"
+        git push
