@@ -20,6 +20,6 @@ jobs:
 
       - name: Run Jupyter Notebook
         run: |
-          python -m nbconvert --execute --to notebook simplied_daily_fois_alert.ipynb
+          python -m nbconvert --execute --to notebook simplied_daily_fois_alert - Copy.ipynb
         env:
           JUPYTER_ENABLE_LAB: 'true'  # Optional: Enables JupyterLab if needed
