@@ -16,10 +16,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.x  # Use the version compatible with your Python environment
+          python-version: 3.11  # Specify Python version 3.11
 
       - name: Run Jupyter Notebook
         run: |
-          python -m nbconvert --execute --to notebook simplied_daily_fois_alert - Copy.ipynb
+          python -m nbconvert --execute --to notebook simplified_daily_fois_alert - Copy.ipynb
         env:
           JUPYTER_ENABLE_LAB: 'true'  # Optional: Enables JupyterLab if needed
