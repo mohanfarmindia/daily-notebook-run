@@ -2,7 +2,7 @@ name: Run Daily Notebook
 
 on:
   schedule:
-    - cron: '0 23 * * *'  # Run at 11 PM every day
+    - cron: '0 10 * * *'  # Run at 10 AM every day
   workflow_run:
     workflows: ["Run Daily Notebook"]
 
