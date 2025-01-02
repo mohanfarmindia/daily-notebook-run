@@ -1,27 +1,25 @@
-name: Run Notebook
+name: Run Daily Notebook
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs every 24 hours
+    - cron: '0 23 * * *'  # Run at 11 PM every day
+  workflow_run:
+    workflows: ["Run Daily Notebook"]
 
 jobs:
   run-notebook:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Using a Linux-based VM
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
-    - name: Install Jupyter
-      run: pip install jupyter nbconvert
-    - name: Run Notebook
-      run: |
-        jupyter nbconvert --to notebook --execute simplied_daily_fois_alert.ipynb
-    - name: Commit results
-      run: |
-        git config --local user.email "you@example.com"
-        git config --local user.name "Your Name"
-        git add executed_notebook.ipynb
-        git commit -m "Run notebook"
-        git push
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.x  # Use the version compatible with your Python environment
+
+      - name: Run Jupyter Notebook
+        run: |
+          python -m nbconvert --execute --to notebook simplied_daily_fois_alert.ipynb
+        env:
+          JUPYTER_ENABLE_LAB: 'true'  # Optional: Enables JupyterLab if needed
