@@ -2,8 +2,7 @@ name: Run Daily Notebook
 
 on:
   schedule:
-    - cron: '15 11 * * *'  # Run at 11:05 AM every day
-  workflow_dispatch:  # Allows manual trigger as well
+    - cron: '55 10 * * *'  # Run at 10:55 AM daily
 
 jobs:
   run-notebook:
@@ -15,13 +14,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.11
-
-      - name: Install Dependencies
-        run: |
-          pip install --upgrade pip
-          pip install nbconvert notebook pandas selenium telegram python-dotenv tqdm pillow
+          python-version: 3.11  # Specify Python version
 
       - name: Run Jupyter Notebook
         run: |
-          python -m nbconvert --execute --to notebook simplied_daily_fois_alert - Copy.ipynb
+          python /github/workflows/simplied_daily_fois_alert_github.ipynb --execute --to notebook
