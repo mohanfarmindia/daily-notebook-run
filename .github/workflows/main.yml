@@ -21,7 +21,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install nbconvert notebook pandas selenium telegram python-dotenv tqdm pillow
-          
+
       - name: Run Jupyter Notebook
         run: |
           python -m nbconvert --execute --to notebook simplified_daily_fois_alert.ipynb
