@@ -3,12 +3,10 @@ name: Run Daily Notebook
 on:
   schedule:
     - cron: '55 10 * * *'  # Run at 10:55 AM every day
-  workflow_run:
-    workflows: ["Run Daily Notebook"]
 
 jobs:
   run-notebook:
-    runs-on: ubuntu-latest  # Using a Linux-based VM
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -16,10 +14,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.11  # Specify Python version 3.11
+          python-version: 3.11
 
       - name: Run Jupyter Notebook
         run: |
-          python -m nbconvert --execute --to notebook simplified_daily_fois_alert - Copy.ipynb
-        env:
-          JUPYTER_ENABLE_LAB: 'true'  # Optional: Enables JupyterLab if needed
+          python -m nbconvert --execute --to notebook simplified_daily_fois_alert.ipynb
