@@ -1,9 +1,9 @@
 name: Run Daily Notebook
 
 on:
-  workflow_dispatch:  # Enable manual trigger via GitHub UI
   schedule:
-    - cron: '5 11 * * *'  # Run at 10:55 AM every day
+    - cron: '5 11 * * *'  # Run at 11:05 AM every day
+  workflow_dispatch:  # Allows manual trigger as well
 
 jobs:
   run-notebook:
@@ -17,6 +17,11 @@ jobs:
         with:
           python-version: 3.11
 
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install nbconvert notebook pandas selenium telegram python-dotenv tqdm pillow
+          
       - name: Run Jupyter Notebook
         run: |
           python -m nbconvert --execute --to notebook simplified_daily_fois_alert.ipynb
