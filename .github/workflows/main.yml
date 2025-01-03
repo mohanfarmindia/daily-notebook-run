@@ -1,8 +1,9 @@
 name: Run Daily Notebook
 
 on:
+  workflow_dispatch:  # Enable manual trigger via GitHub UI
   schedule:
-    - cron: '55 10 * * *'  # Run at 10:55 AM every day
+    - cron: '5 11 * * *'  # Run at 10:55 AM every day
 
 jobs:
   run-notebook:
