@@ -2,7 +2,7 @@ name: Run Daily Notebook
 
 on:
   schedule:
-    - cron: '5 11 * * *'  # Run at 11:05 AM every day
+    - cron: '15 11 * * *'  # Run at 11:05 AM every day
   workflow_dispatch:  # Allows manual trigger as well
 
 jobs:
@@ -24,4 +24,4 @@ jobs:
 
       - name: Run Jupyter Notebook
         run: |
-          python -m nbconvert --execute --to notebook simplified_daily_fois_alert.ipynb
+          python -m nbconvert --execute --to notebook simplied_daily_fois_alert - Copy.ipynb
