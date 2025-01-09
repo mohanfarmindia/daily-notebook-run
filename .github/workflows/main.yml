@@ -18,4 +18,4 @@ jobs:
 
       - name: Run Jupyter Notebook
         run: |
-          python /github/workflows/simplied_daily_fois_alert_github.ipynb --execute --to notebook
+          python /github/workflows/simplied_daily_fois_alert.ipynb --execute --to notebook
