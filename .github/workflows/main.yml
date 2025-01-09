@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:  # Allow manual triggering
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   run-script:
@@ -29,4 +29,4 @@ jobs:
 
       - name: Run script
         run: |
-          python path/to/fois_daily.py  # Replace with the path to your script
+          python .github/workflows/fois_daily.py  # Correct path to your script
